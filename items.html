@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hussam's Antique Shop - Items</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hussam's Antique Shop</h1>
+            <p>Buy and Sell Antiques at Good Prices</p>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <section id="buttons">
+            <h2>Explore Our Items</h2>
+            <div class="button-container">
+                <button class="item-button" onclick="goToClocks()">Clocks</button>
+                <button class="item-button" onclick="goToEgyptians()">Egyptians</button>
+                <button class="item-button" onclick="goToGramophones()">Gramophones</button>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hussam's Antique Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function goToClocks() {
+            window.location.href = 'items/clocks.html';
+        }
+
+        function goToEgyptians() {
+            window.location.href = 'items/egyptians.html';
+        }
+
+        function goToGramophones() {
+            window.location.href = 'items/gramophones.html';
+        }
+    </script>
+</body>
+</html>
