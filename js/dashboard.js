@@ -8,19 +8,6 @@ function logout() {
     window.location.href = 'admin-login.html';
 }
 
-// Add this helper function at the top
-function getImageUrl(imageUrl) {
-    if (!imageUrl) return 'server/public/uploads/placeholder.jpg';
-    if (imageUrl.startsWith('http')) return imageUrl;
-    
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const baseUrl = isLocalhost 
-        ? 'http://localhost:3000'
-        : 'https://7c30-2600-1702-3160-7fa0-55e2-7afe-af71-6559.ngrok-free.app';
-        
-    return `${baseUrl}${imageUrl}`;
-}
-
 // Display items in the admin table
 async function displayAdminItems() {
     try {
@@ -31,7 +18,7 @@ async function displayAdminItems() {
             <tr>
                 <td>${item.id}</td>
                 <td>
-                    <img src="${getImageUrl(item.image_url)}" 
+                    <img src="${item.image_url ? `https://light-guests-yawn.loca.lt${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
                          alt="${item.name}" 
                          width="50">
                 </td>
@@ -70,7 +57,7 @@ async function editItem(id) {
         const imagePreview = document.querySelector('.image-preview');
         if (item.image_url) {
             imagePreview.innerHTML = `
-                <img src="${getImageUrl(item.image_url)}" 
+                <img src="http://localhost:3000${item.image_url}" 
                      alt="${item.name}" 
                      style="max-width: 200px; margin-top: 10px;">
                 <input type="hidden" name="current_image_url" value="${item.image_url}">
