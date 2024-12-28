@@ -1,6 +1,12 @@
 class Database {
     constructor() {
-        this.API_URL = 'http://localhost:3000/api';
+        // Check if we're in production (GitHub Pages)
+        const isProduction = window.location.hostname !== 'localhost';
+        
+        // Use local URL for development, your computer's IP/domain for production
+        this.API_URL = isProduction 
+            ? 'http://192.168.1.68:3000/api'  // Replace with your computer's IP
+            : 'http://localhost:3000/api';
     }
 
     async getAllItems() {

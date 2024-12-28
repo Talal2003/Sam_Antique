@@ -18,7 +18,7 @@ async function displayAdminItems() {
             <tr>
                 <td>${item.id}</td>
                 <td>
-                    <img src="${item.image_url ? `http://localhost:3000${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
+                    <img src="${item.image_url ? `${db.API_URL.replace('/api', '')}${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
                          alt="${item.name}" 
                          width="50">
                 </td>

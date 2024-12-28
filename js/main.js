@@ -6,7 +6,7 @@ async function displayItems() {
     container.innerHTML = items.map(item => `
         <div class="item fade-in">
             <div class="item-image">
-                <img src="${item.image_url ? `http://localhost:3000${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
+                <img src="${item.image_url ? `${db.API_URL.replace('/api', '')}${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
                      alt="${item.name}">
                 <div class="item-overlay">
                     <button class="view-details">View Details</button>
