@@ -18,7 +18,7 @@ async function displayAdminItems() {
             <tr>
                 <td>${item.id}</td>
                 <td>
-                    <img src="${item.image_url ? `https://light-guests-yawn.loca.lt${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
+                    <img src="${item.image_url ? `https://325718fs-3000.use.devtunnels.ms${item.image_url}` : 'server/public/uploads/placeholder.jpg'}" 
                          alt="${item.name}" 
                          width="50">
                 </td>
@@ -57,7 +57,7 @@ async function editItem(id) {
         const imagePreview = document.querySelector('.image-preview');
         if (item.image_url) {
             imagePreview.innerHTML = `
-                <img src="http://localhost:3000${item.image_url}" 
+                <img src="https://325718fs-3000.use.devtunnels.ms${item.image_url}" 
                      alt="${item.name}" 
                      style="max-width: 200px; margin-top: 10px;">
                 <input type="hidden" name="current_image_url" value="${item.image_url}">

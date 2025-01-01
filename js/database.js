@@ -1,6 +1,6 @@
 class Database {
     constructor() {
-        this.API_URL = 'https://light-guests-yawn.loca.lt/api';
+        this.API_URL = 'https://325718fs-3000.use.devtunnels.ms/api';
     }
 
     async getAllItems() {
