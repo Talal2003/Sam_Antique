@@ -114,6 +114,24 @@ document.getElementById('image').addEventListener('change', function(e) {
     }
 });
 
+// Add this function to load item types
+async function loadItemTypes() {
+    try {
+        const types = await db.getItemTypes();
+        const typeSelect = document.getElementById('type');
+        
+        typeSelect.innerHTML = `
+            <option value="">Select a type...</option>
+            ${types.map(type => `
+                <option value="${type.id}">${type.name}</option>
+            `).join('')}
+        `;
+    } catch (error) {
+        console.error('Error loading item types:', error);
+        alert('Error loading item types. Please try again.');
+    }
+}
+
 // Handle form submission (both add and edit)
 document.getElementById('add-item-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -122,10 +140,11 @@ document.getElementById('add-item-form').addEventListener('submit', async (e) =>
     const name = document.getElementById('name').value.trim();
     const description = document.getElementById('description').value.trim();
     const price = document.getElementById('price').value;
+    const type_id = document.getElementById('type').value;
     const imageInput = document.getElementById('image');
     
     // Validate form data
-    if (!name || !description || !price) {
+    if (!name || !description || !price || !type_id) {
         alert('Please fill in all required fields');
         return;
     }
@@ -140,6 +159,7 @@ document.getElementById('add-item-form').addEventListener('submit', async (e) =>
                 name,
                 description,
                 price,
+                type_id,
                 image: imageInput.files[0],
                 current_image_url: currentImageUrl
             };
@@ -153,10 +173,10 @@ document.getElementById('add-item-form').addEventListener('submit', async (e) =>
                 name,
                 description,
                 price,
+                type_id,
                 image: imageInput.files[0]
             };
             
-            console.log('Submitting new item:', newItem); // Debug log
             await db.addItem(newItem);
         }
 
@@ -174,5 +194,6 @@ document.getElementById('add-item-form').addEventListener('submit', async (e) =>
 
 // Initialize dashboard
 document.addEventListener('DOMContentLoaded', () => {
+    loadItemTypes();
     displayAdminItems();
 }); 

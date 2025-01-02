@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hussam Treasures | Antique Store</title>
+    <title>Sam Antique Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "DG17M6FpH23Xj0Fjy",
+            });
+        })();
+    </script>
 </head>
 <body>
     <nav>
         <div class="logo">
             <i class="fas fa-gem"></i>
-            Hussam Treasures
+            Sam Antique
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -24,27 +32,33 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Discover Timeless Beauty</h1>
-            <p>Explore our curated collection of unique antiques and Hussam treasures</p>
-            <a href="#collection" class="cta-button">View Collection</a>
+            <div class="items-grid" id="items-container">
+                <!-- Items will be dynamically inserted here -->
+            </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section id="collection" class="collection">
-        <h2>Featured Collection</h2>
-        <div class="items-grid" id="items-container">
-            <!-- Items will be dynamically inserted here -->
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section id="about" class="about">
-        <div class="about-content">
-            <h2>Our Story</h2>
-            <p>Since 1985, Hussam Treasures has been a curator of fine antiques and historical artifacts. Each piece in our collection tells a unique story and carries the charm of bygone eras.</p>
+    <section id="sendmessage" class="sendmessage">
+        <div class="sendmessage-content">
+            <h2>Send a Message</h2>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                </div>
+                <div id="form-status"></div>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Message</span>
+                </button>
+            </form>
         </div>
     </section>
 
@@ -54,7 +68,7 @@
         <h2>Contact Us</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <p><i class="fas fa-map-marker-alt"></i> 123 Vintage Street, Old Town</p>
+                <p><i class="fas fa-map-marker-alt"></i> Toledo, OH</p>
                 <p><i class="fas fa-phone"></i> (567) 560-0328</p>
                 <p><i class="fas fa-envelope"></i> hussam@alshamalia.net</p>
             </div>
@@ -64,12 +78,13 @@
     <div class="section-divider"></div>
 
     <footer>
-        <p>&copy; 2024, Hussam Treasures. All rights reserved.</p>
+        <p>&copy; 2024, Sam Antique. All rights reserved.</p>
         <p>Designed and Developed by Talal Alshamalia.</p>
     </footer>
 
     <script src="script.js"></script>
     <script src="js/database.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/sendmail.js"></script>
 </body>
 </html> 

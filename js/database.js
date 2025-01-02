@@ -4,8 +4,17 @@ class Database {
     }
 
     async getAllItems() {
-        const response = await fetch(`${this.API_URL}/items`);
-        return await response.json();
+        try {
+            const response = await fetch(`${this.API_URL}/items`);
+            const items = await response.json();
+            return items.map(item => ({
+                ...item,
+                type_name: item.type_name || 'Uncategorized'
+            }));
+        } catch (error) {
+            console.error('Error fetching items:', error);
+            return [];
+        }
     }
 
     async addItem(item) {
@@ -16,6 +25,7 @@ class Database {
             formData.append('name', item.name);
             formData.append('description', item.description);
             formData.append('price', item.price);
+            formData.append('type_id', item.type_id);
             
             // If there's an image file, append it
             if (item.image instanceof File) {
@@ -32,7 +42,7 @@ class Database {
             }
 
             const result = await response.json();
-            console.log('Add item response:', result); // Debug log
+            console.log('Add item response:', result);
             return result;
         } catch (error) {
             console.error('Error in addItem:', error);
@@ -94,6 +104,11 @@ class Database {
             throw new Error('Failed to update item');
         }
         
+        return await response.json();
+    }
+
+    async getItemTypes() {
+        const response = await fetch(`${this.API_URL}/item-types`);
         return await response.json();
     }
 }
